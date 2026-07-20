@@ -1,0 +1,75 @@
+name: Bug report
+description: Report a reproducible defect in the generic core.
+title: "[Bug]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please use a minimal reproduction and remove personal data, credentials, and licensed content before submitting.
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Package version or exact commit.
+      placeholder: 0.1.0 or commit SHA
+    validations:
+      required: true
+
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - learning
+        - content
+        - storage
+        - build or packaging
+        - documentation
+        - unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Actual behavior
+      description: What happened, including a minimal error message or result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide original, non-sensitive data and the smallest code sample that reproduces the problem.
+      render: typescript
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Node or browser version, operating system, and package manager.
+      placeholder: Node 24, npm 10, macOS
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety checks
+      options:
+        - label: I removed personal data, credentials, and content that I cannot redistribute.
+          required: true
+        - label: This is not an undisclosed security vulnerability.
+          required: true

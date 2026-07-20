@@ -1,0 +1,102 @@
+{
+  "name": "exam-loop-core",
+  "version": "0.1.0",
+  "description": "Headless, content-agnostic TypeScript primitives for gamified exam learning.",
+  "author": "jevonhou",
+  "keywords": [
+    "education",
+    "exam",
+    "gamification",
+    "learning",
+    "spaced-repetition",
+    "typescript"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jevonhou/exam-loop-core.git"
+  },
+  "homepage": "https://github.com/jevonhou/exam-loop-core#readme",
+  "bugs": {
+    "url": "https://github.com/jevonhou/exam-loop-core/issues"
+  },
+  "sideEffects": false,
+  "packageManager": "npm@10.9.2",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./content": {
+      "types": "./dist/content/index.d.ts",
+      "import": "./dist/content/index.js"
+    },
+    "./learning": {
+      "types": "./dist/learning/index.d.ts",
+      "import": "./dist/learning/index.js"
+    },
+    "./storage": {
+      "types": "./dist/storage/index.d.ts",
+      "import": "./dist/storage/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "files": [
+    "dist",
+    "docs",
+    "examples",
+    "API_STABILITY.md",
+    "CHANGELOG.md",
+    "COMPATIBILITY.md",
+    "CODE_OF_CONDUCT.md",
+    "SUPPORT.md",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CONTENT_LICENSE_POLICY.md",
+    "THIRD_PARTY_NOTICES.md",
+    "TRADEMARK.md"
+  ],
+  "scripts": {
+    "audit:public-files": "node scripts/audit-public-files.mjs",
+    "audit:dependencies": "npm audit --audit-level=high",
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.build.json",
+    "check": "npm run format:check && npm run build && npm run lint:built && npm run typecheck:built && npm run test:coverage && npm run example && npm run audit:public-files",
+    "check:publish": "npm run check",
+    "example": "node examples/fictional-certification/run.mjs",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "npm run build --silent && npm run lint:built",
+    "lint:built": "eslint . --max-warnings 0",
+    "package:local": "npm run check:publish && node scripts/package-local.mjs",
+    "prepack": "npm run check:publish",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "npm run build --silent && npm run typecheck:built",
+    "typecheck:built": "tsc -p tsconfig.check.json --noEmit"
+  },
+  "engines": {
+    "node": ">=22",
+    "npm": ">=10"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.13.3",
+    "@vitest/coverage-v8": "3.2.7",
+    "eslint": "10.7.0",
+    "globals": "17.7.0",
+    "prettier": "3.9.5",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.64.0",
+    "vitest": "3.2.7"
+  }
+}

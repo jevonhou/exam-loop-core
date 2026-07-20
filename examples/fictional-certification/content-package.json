@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "fictional-orbital-archive",
+  "version": "1.0.0",
+  "title": "Fictional Orbital Archive Certificate",
+  "license": {
+    "copyrightHolderOrSource": "Exam Loop Core contributors; original fictional example",
+    "redistributionPermitted": true,
+    "spdxId": "CC0-1.0",
+    "modificationNotice": "No modifications to an external source; this example was written for this repository."
+  },
+  "skills": [
+    {
+      "id": "rule-lookup",
+      "title": "Rule lookup"
+    },
+    {
+      "id": "sequence-reasoning",
+      "title": "Sequence reasoning"
+    }
+  ],
+  "stages": [
+    {
+      "id": "intake",
+      "title": "Fictional intake",
+      "skillIds": ["rule-lookup"]
+    },
+    {
+      "id": "mock-audit",
+      "title": "Fictional mock audit",
+      "skillIds": ["rule-lookup", "sequence-reasoning"],
+      "prerequisiteStageIds": ["intake"]
+    }
+  ],
+  "items": [
+    {
+      "id": "aster-routing",
+      "skillIds": ["rule-lookup"],
+      "stageIds": ["intake"],
+      "payload": {
+        "prompt": "Protocol Aster-7 assigns a blue triangle file to Tray K. Where should it go?",
+        "choices": [
+          { "id": "tray-k", "label": "Tray K" },
+          { "id": "tray-r", "label": "Tray R" },
+          { "id": "tray-v", "label": "Tray V" }
+        ],
+        "correctChoiceId": "tray-k"
+      }
+    },
+    {
+      "id": "inspection-order",
+      "skillIds": ["sequence-reasoning"],
+      "stageIds": ["mock-audit"],
+      "payload": {
+        "prompt": "The invented audit order is inspect seal, record code, then shelve file. What comes second?",
+        "choices": [
+          { "id": "inspect", "label": "Inspect seal" },
+          { "id": "record", "label": "Record code" },
+          { "id": "shelve", "label": "Shelve file" }
+        ],
+        "correctChoiceId": "record"
+      }
+    },
+    {
+      "id": "amber-clearance",
+      "skillIds": ["rule-lookup", "sequence-reasoning"],
+      "stageIds": ["mock-audit"],
+      "payload": {
+        "prompt": "In this fictional protocol, amber clearance permits two archive rings. Which request stays within the rule?",
+        "choices": [
+          { "id": "one", "label": "Open one ring" },
+          { "id": "two", "label": "Open two rings" },
+          { "id": "three", "label": "Open three rings" }
+        ],
+        "correctChoiceId": "two"
+      }
+    }
+  ]
+}

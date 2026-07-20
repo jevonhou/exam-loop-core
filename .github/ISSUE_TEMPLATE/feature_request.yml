@@ -1,0 +1,48 @@
+name: Feature request
+description: Propose a reusable, content-agnostic capability.
+title: "[Proposal]: "
+labels: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Reusable problem
+      description: Describe the problem across more than one subject or product.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed contract
+      description: Explain inputs, outputs, deterministic behavior, and failure cases.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Could this remain in an application adapter or separate package?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Boundary fit
+      options:
+        - Generic headless core
+        - Optional adapter package
+        - Application layer only
+        - Unsure
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Rights and data
+      options:
+        - label: The proposal requires no copied exam content, restricted dataset, or learner data.
+          required: true
