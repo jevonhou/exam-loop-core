@@ -113,9 +113,9 @@ describe("archive", () => {
   it("strictly rejects missing and additional archive fields", async () => {
     const archive = await createArchive({ score: 3 }, { createdAt: CREATED_AT });
 
-    expect(() => parseArchive({ ...archive, unexpected: true })).toThrowError(ArchiveParseError);
+    expect(() => parseArchive({ ...archive, unexpected: true })).toThrow(ArchiveParseError);
     const { checksum: _checksum, ...withoutChecksum } = archive;
-    expect(() => parseArchive(withoutChecksum)).toThrowError(ArchiveParseError);
+    expect(() => parseArchive(withoutChecksum)).toThrow(ArchiveParseError);
   });
 
   it("reports unsupported versions instead of attempting a best-effort parse", async () => {
@@ -156,7 +156,7 @@ describe("archive", () => {
       ok: false,
       code: "INVALID_PAYLOAD",
     });
-    expect(() => parseArchive(archive, isProgress)).toThrowError(ArchiveParseError);
+    expect(() => parseArchive(archive, isProgress)).toThrow(ArchiveParseError);
   });
 
   it("accepts a matching payload validator and preserves its narrowed type", async () => {
@@ -219,7 +219,7 @@ describe("archive", () => {
       1n,
       () => true,
     ]) {
-      expect(() => canonicalizeJson(value)).toThrowError(ArchiveParseError);
+      expect(() => canonicalizeJson(value)).toThrow(ArchiveParseError);
     }
   });
 
